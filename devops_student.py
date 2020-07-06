@@ -7,20 +7,28 @@ class Devops(Student):
         super().__init__(age)
         self.__course = course
 
+    # Encapsulation prevents accidentally changing an object's variable. Prevents other classes from accessing methods
+    # within classes that are protected
     def set_course(self, value):
-        self.__course = value
+        self.course = value
 
     def get_course(self):
         return self.__course
 
 # instances
-marcus = Devops(23, 'SQL, Python')
-jim = Devops(25, 'SQL')
-bob = Devops(30, 'SQL, Python, AWS')
+dev = Devops(23, 'SQL, Python')
+stu = Student(23)
 
-marcus.set_age(28)
-# ford.__age = 23 # uncommenting this will produce an error because age has been set to a private variable
-print(marcus.get_age())
-# ford.__course # will also produce an error
-print(marcus.get_course())
+# 1) setattr method
+# dev.set_age(28)
+# dev.__age = 23 # uncommenting this will produce an error because age has been set to a private variable
+# print(dev.get_age())
 
+# 2) second example
+# marcus.__course # will also produce an error
+# print(marcus.get_course())
+# accessible through name_mangling
+
+# 3) Privitising attribute
+# dev._Student__set_age(35)
+# print(dev.get_age())
